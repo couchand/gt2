@@ -1,6 +1,6 @@
 grammar Bnf
   rule production
-    token space? produces space? tokens
+    token space? produces space? tokens?
   end
 
   rule tokens
