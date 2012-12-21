@@ -1,0 +1,21 @@
+grammar Bnf
+  rule production
+    token space? produces space? tokens
+  end
+
+  rule tokens
+    token space tokens / token
+  end
+
+  rule token
+    [^ \t\n\r]+
+  end
+
+  rule produces
+    ":="
+  end
+
+  rule space
+    ( " " / "\t" )+
+  end
+end
