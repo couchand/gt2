@@ -1,4 +1,12 @@
 grammar Bnf
+  rule grammar
+    productions
+  end
+
+  rule productions
+    production newline productions / production
+  end
+
   rule production
     token space? produces space? tokens?
   end
@@ -17,5 +25,9 @@ grammar Bnf
 
   rule space
     ( " " / "\t" )+
+  end
+
+  rule newline
+    space? "\n" space?
   end
 end
