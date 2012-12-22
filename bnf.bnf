@@ -23,11 +23,20 @@ character_class := "[" class_char* "]"
 class_char := "\\]"
 class_char := [^\]]
 
-quoted_string := '"' string_char* '"'
+quoted_string := singly_quoted_string
+quoted_string := doubly_quoted_string
 
-string_char := "\\\\"
-string_char := "\\" '"'
-string_char := [^"]
+singly_quoted_string := "'" singly_quoted_string_char* "'"
+
+singly_quoted_string_char := "\\\\"
+singly_quoted_string_char := "\\" "'"
+singly_quoted_string_char := [^']
+
+doubly_quoted_string := '"' doubly_quoted_string_char* '"'
+
+doubly_quoted_string_char := "\\\\"
+doubly_quoted_string_char := "\\" '"'
+doubly_quoted_string_char := [^"]
 
 produces := ":="
 

@@ -40,10 +40,22 @@ grammar Bnf
   end
 
   rule quoted_string
-    '"' string_char* '"'
+    singly_quoted_string / doubly_quoted_string
   end
 
-  rule string_char
+  rule singly_quoted_string
+    "'" singly_quoted_string_char* "'"
+  end
+
+  rule singly_quoted_string_char
+    "\\\\" / "\\" "'" / [^']
+  end
+
+  rule doubly_quoted_string
+    '"' doubly_quoted_string_char* '"'
+  end
+
+  rule doubly_quoted_string_char
     "\\\\" / "\\" '"' / [^"]
   end
 
