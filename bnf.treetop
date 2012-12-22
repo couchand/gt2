@@ -16,7 +16,15 @@ grammar Bnf
   end
 
   rule token
-    [^ \t\n\r:]+
+    quoted_string / [^ \t\n\r:"]+
+  end
+
+  rule quoted_string
+    '"' string_char* '"'
+  end
+
+  rule string_char
+    "\\\\" / "\\" '"' / [^"]
   end
 
   rule produces
