@@ -3,7 +3,7 @@ grammar ::= productions newline?
 productions ::= production newline productions
 productions ::= production
 
-production ::= nonterminal space? produces space? tokens?
+production ::= space? nonterminal space? produces space? tokens?
 
 tokens ::= token quantifier? space tokens
 tokens ::= token quantifier?
