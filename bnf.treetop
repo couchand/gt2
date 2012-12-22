@@ -68,6 +68,6 @@ grammar Bnf
   end
 
   rule newline
-    space? "\n"+ space?
+    space? ( "\n" space? )+
   end
 end

@@ -45,4 +45,6 @@ space := space_char+
 space_char := " "
 space_char := "\t"
 
-newline := space? "\n"+ space?
+newline := space? newline_char+
+
+newline_char := "\n" space?
