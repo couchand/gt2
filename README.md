@@ -28,5 +28,5 @@ Note that there is just a bit of sugar on top of the
 vanilla BNF specification.  Namely:
 
  * Character classes are allowed
- * Quantifiers will be allowed
+ * Quantifiers are allowed
  * Several options in one production will be allowed

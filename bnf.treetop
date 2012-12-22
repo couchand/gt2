@@ -12,7 +12,11 @@ grammar Bnf
   end
 
   rule tokens
-    token space tokens / token
+    token quantifier? space tokens / token quantifier?
+  end
+
+  rule quantifier
+    [?*+]
   end
 
   rule token
@@ -20,7 +24,7 @@ grammar Bnf
   end
 
   rule nonterminal
-    [a-zA-Z] [^ \t\n\r:"]*
+    [a-zA-Z] [^ \t\n\r:"?*+]*
   end
 
   rule terminal

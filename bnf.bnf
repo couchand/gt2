@@ -5,13 +5,15 @@ productions := production
 
 production := nonterminal space? produces space? tokens?
 
-tokens := token space tokens
-tokens := token
+tokens := token quantifier? space tokens
+tokens := token quantifier?
+
+quantifier := [?*+]
 
 token := nonterminal
 token := terminal
 
-nonterminal := [a-zA-Z] [^ \t\n\r:"]*
+nonterminal := [a-zA-Z] [^ \t\n\r:"?*+]*
 
 terminal := quoted_string
 terminal := character_class
