@@ -15,6 +15,13 @@ class BnfTest < Test::Unit::TestCase
     assert tree.is_a?(Node::Nonterminal), 'The resulting tree should be a nonterminal node'
     assert_equal 'foobar', tree.name
   end
+
+  def test_token_nonterminal_bad
+    input = 'foo:bar'
+    parser = Bnf.parser
+
+    assert_raises(Exception){ parser.parse input, { :root => :nonterminal } }
+  end
 end
 
 end
