@@ -2,9 +2,15 @@ module Gt2
 module Node
 
 class Nonterminal
-  def name
-    "foobar"
+  def initialize(name)
+    @name = name
   end
+
+  attr_reader :name
+
+  private
+
+  attr_writer :name
 end
 
 end
