@@ -1,4 +1,4 @@
-grammar := productions
+grammar := productions newline?
 
 productions := production newline productions
 productions := production

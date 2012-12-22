@@ -1,6 +1,6 @@
 grammar Bnf
   rule grammar
-    productions
+    productions newline?
   end
 
   rule productions
