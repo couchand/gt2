@@ -20,4 +20,10 @@ class SinglyQuotedString < Treetop::Runtime::SyntaxNode
   end
 end
 
+class CharacterClass < Treetop::Runtime::SyntaxNode
+  def abstract
+    Gt2::Node::TerminalClass.new text_value
+  end
+end
+
 end

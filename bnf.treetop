@@ -32,7 +32,7 @@ grammar Bnf
   end
 
   rule character_class
-    "[" class_char* "]"
+    "[" class_char* "]" <CharacterClass>
   end
 
   rule class_char

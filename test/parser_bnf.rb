@@ -102,6 +102,17 @@ class BnfTest < Test::Unit::TestCase
     assert tree.is_a?(Node::TerminalLiteral), 'The resulting tree should be a terminal node'
     assert_equal "foo\\'bar", tree.text_value
   end
+
+  def test_token_terminal_character_class
+    input = "[^-. a-zA-Z0-9$!^]"
+    parser = Bnf.parser
+
+    tree = parser.parse input, { :root => :terminal }
+
+    assert !tree.nil?, 'The character class terminal should parse'
+    assert tree.is_a?(Node::TerminalClass), 'The resulting tree should be a terminal node'
+    assert_equal input, tree.expression, 'The character class should reflect the input'
+  end
 end
 
 end

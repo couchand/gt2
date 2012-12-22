@@ -25,5 +25,17 @@ class TerminalLiteral
   attr_writer :text_value
 end
 
+class TerminalClass
+  def initialize(expression)
+    @expression = expression
+  end
+
+  attr_reader :expression
+
+  private
+
+  attr_writer :expression
+end
+
 end
 end
