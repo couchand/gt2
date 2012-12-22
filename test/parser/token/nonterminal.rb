@@ -1,11 +1,11 @@
 require 'test/unit'
-require_relative '../parser.rb'
+require_relative '../../../parser.rb'
 
 module Gt2
 module Parser
 
 class BnfTest < Test::Unit::TestCase
-  def test_token_nonterminal
+  def test_nonterminal
     input = 'foobar'
     parser = Bnf.parser
 
@@ -16,14 +16,14 @@ class BnfTest < Test::Unit::TestCase
     assert_equal input, tree.name
   end
 
-  def test_token_nonterminal_bad_char
+  def test_nonterminal_bad_char
     input = 'foo:bar'
     parser = Bnf.parser
 
     assert_raises(Exception){ parser.parse input, { :root => :nonterminal } }
   end
 
-  def test_token_terminal_double_quote_string
+  def test_terminal_double_quote_string
     string_val = "foobar"
     input = '"' + string_val + '"'
     parser = Bnf.parser
@@ -35,14 +35,14 @@ class BnfTest < Test::Unit::TestCase
     assert_equal string_val, tree.text_value
   end
 
-  def test_token_terminal_double_quote_string_with_unescaped_quote
+  def test_terminal_double_quote_string_with_unescaped_quote
     input = '"foo"bar"'
     parser = Bnf.parser
 
     assert_raises(Exception){ parser.parse input, { :root => :terminal } }
   end
 
-  def test_token_terminal_double_quote_string_with_escaped_quote
+  def test_terminal_double_quote_string_with_escaped_quote
     input = '"foo\\"bar"'
     parser = Bnf.parser
 
@@ -53,7 +53,7 @@ class BnfTest < Test::Unit::TestCase
     assert_equal 'foo"bar', tree.text_value
   end
 
-  def test_token_terminal_double_quote_string_with_escaped_backslash
+  def test_terminal_double_quote_string_with_escaped_backslash
     input = '"foo\\\\\\"bar"'
     parser = Bnf.parser
 
@@ -64,7 +64,7 @@ class BnfTest < Test::Unit::TestCase
     assert_equal 'foo\\"bar', tree.text_value
   end
 
-  def test_token_terminal_single_quote_string
+  def test_terminal_single_quote_string
     string_val = "foobar"
     input = "'" + string_val + "'"
     parser = Bnf.parser
@@ -76,14 +76,14 @@ class BnfTest < Test::Unit::TestCase
     assert_equal string_val, tree.text_value
   end
 
-  def test_token_terminal_single_quote_string_with_unescaped_quote
+  def test_terminal_single_quote_string_with_unescaped_quote
     input = "'foo'bar'"
     parser = Bnf.parser
 
     assert_raises(Exception){ parser.parse input, { :root => :terminal } }
   end
 
-  def test_token_terminal_single_quote_string_with_escaped_quote
+  def test_terminal_single_quote_string_with_escaped_quote
     input = "'foo\\'bar'"
     parser = Bnf.parser
 
@@ -94,7 +94,7 @@ class BnfTest < Test::Unit::TestCase
     assert_equal "foo'bar", tree.text_value
   end
 
-  def test_token_terminal_single_quote_string_with_escaped_backslash
+  def test_terminal_single_quote_string_with_escaped_backslash
     input = "'foo\\\\\\'bar'"
     parser = Bnf.parser
 
@@ -105,7 +105,7 @@ class BnfTest < Test::Unit::TestCase
     assert_equal "foo\\'bar", tree.text_value
   end
 
-  def test_token_terminal_character_class
+  def test_terminal_character_class
     input = "[^-. a-zA-Z0-9$!^]"
     parser = Bnf.parser
 
@@ -116,14 +116,14 @@ class BnfTest < Test::Unit::TestCase
     assert_equal input, tree.expression, 'The character class should reflect the input'
   end
 
-  def test_token_terminal_character_class_unescaped_bracket
+  def test_terminal_character_class_unescaped_bracket
     input = "[abc]def]"
     parser = Bnf.parser
 
     assert_raises(Exception){ parser.parse input, { :root => :terminal } }
   end
 
-  def test_token_terminal_character_class_escaped_bracket
+  def test_terminal_character_class_escaped_bracket
     input = "[abc\\]def]"
     parser = Bnf.parser
 
