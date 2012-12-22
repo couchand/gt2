@@ -44,7 +44,7 @@ grammar Bnf
   end
 
   rule singly_quoted_string
-    "'" singly_quoted_string_char* "'"
+    "'" singly_quoted_string_char* "'" <SinglyQuotedString>
   end
 
   rule singly_quoted_string_char

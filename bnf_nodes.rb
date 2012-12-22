@@ -14,4 +14,10 @@ class DoublyQuotedString < Treetop::Runtime::SyntaxNode
   end
 end
 
+class SinglyQuotedString < Treetop::Runtime::SyntaxNode
+  def abstract
+    Gt2::Node::TerminalLiteral.new text_value.slice(1..-2).gsub(/\\'/,"'").gsub(/\\\\/,'\\')
+  end
+end
+
 end
