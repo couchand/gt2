@@ -20,10 +20,22 @@ grammar Bnf
   end
 
   rule nonterminal
-    [^ \t\n\r:"]+
+    [a-zA-Z] [^ \t\n\r:"]*
   end
 
   rule terminal
+    quoted_string / character_class
+  end
+
+  rule character_class
+    "[" class_char* "]"
+  end
+
+  rule class_char
+    "\\]" / [^\]]
+  end
+
+  rule quoted_string
     '"' string_char* '"'
   end
 

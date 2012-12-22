@@ -11,9 +11,17 @@ tokens := token
 token := nonterminal
 token := terminal
 
-nonterminal := [^ \t\n\r:"]+
+nonterminal := [a-zA-Z] [^ \t\n\r:"]*
 
-terminal := '"' string_char* '"'
+terminal := quoted_string
+terminal := character_class
+
+character_class := "[" class_char* "]"
+
+class_char := "\\]"
+class_char := [^\]]
+
+quoted_string := '"' string_char* '"'
 
 string_char := "\\\\"
 string_char := "\\" '"'
