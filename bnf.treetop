@@ -8,7 +8,7 @@ grammar Bnf
   end
 
   rule production
-    token space? produces space? tokens?
+    nonterminal space? produces space? tokens?
   end
 
   rule tokens
