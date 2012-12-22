@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'treetop'
 
-require_relative 'nodes.rb'
+require_relative 'bnf_nodes.rb'
 
 module Gt2
 module Parser
@@ -33,8 +33,7 @@ class Bnf
   def parse(input,options={})
     Bnf.load
     parse_tree = Bnf.parse input, options
-
-    Node::Nonterminal.new
+    parse_tree.abstract
   end
 
   private

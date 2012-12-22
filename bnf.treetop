@@ -24,7 +24,7 @@ grammar Bnf
   end
 
   rule nonterminal
-    [a-zA-Z] [^ \t\n\r:"?*+]*
+    [a-zA-Z] [^ \t\n\r:"?*+]* <Nonterminal>
   end
 
   rule terminal
