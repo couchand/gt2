@@ -20,9 +20,9 @@ Syntax
 Source files will be in a modified BNF form.  For instance,
 
 	// sums.bnf
-	sum := number "+" number
-	sum := number
-	number := [0-9]+
+	sum ::= number "+" number
+	sum ::= number
+	number ::= [0-9]+
 
 Note that there is just a bit of sugar on top of the
 vanilla BNF specification.  Namely:
