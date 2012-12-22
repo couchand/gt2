@@ -10,7 +10,7 @@ end
 
 class DoublyQuotedString < Treetop::Runtime::SyntaxNode
   def abstract
-    Gt2::Node::TerminalLiteral.new text_value.slice 1..-2
+    Gt2::Node::TerminalLiteral.new text_value.slice(1..-2).gsub(/\\"/,'"')
   end
 end
 
