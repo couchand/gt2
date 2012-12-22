@@ -27,8 +27,7 @@ class Bnf
 			#{@@parser.failure_column}"
     end
 
-    #self.clean_tree(tree)
-    tree
+    self.clean_tree(tree)
   end
 
   def parse(input,options={})
@@ -44,6 +43,7 @@ class Bnf
     return if(root_node.elements.nil?)
     root_node.elements.delete_if{|node| node.class.name == "Treetop::Runtime::SyntaxNode" && node.extension_modules.empty? }
     root_node.elements.each {|node| self.clean_tree(node) }
+    root_node
   end
 end
 
