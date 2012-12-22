@@ -1,50 +1,50 @@
-grammar := productions newline?
+grammar ::= productions newline?
 
-productions := production newline productions
-productions := production
+productions ::= production newline productions
+productions ::= production
 
-production := nonterminal space? produces space? tokens?
+production ::= nonterminal space? produces space? tokens?
 
-tokens := token quantifier? space tokens
-tokens := token quantifier?
+tokens ::= token quantifier? space tokens
+tokens ::= token quantifier?
 
-quantifier := [?*+]
+quantifier ::= [?*+]
 
-token := nonterminal
-token := terminal
+token ::= nonterminal
+token ::= terminal
 
-nonterminal := [a-zA-Z] [^ \t\n\r:"?*+]*
+nonterminal ::= [a-zA-Z] [^ \t\n\r:"?*+]*
 
-terminal := quoted_string
-terminal := character_class
+terminal ::= quoted_string
+terminal ::= character_class
 
-character_class := "[" class_char* "]"
+character_class ::= "[" class_char* "]"
 
-class_char := "\\]"
-class_char := [^\]]
+class_char ::= "\\]"
+class_char ::= [^\]]
 
-quoted_string := singly_quoted_string
-quoted_string := doubly_quoted_string
+quoted_string ::= singly_quoted_string
+quoted_string ::= doubly_quoted_string
 
-singly_quoted_string := "'" singly_quoted_string_char* "'"
+singly_quoted_string ::= "'" singly_quoted_string_char* "'"
 
-singly_quoted_string_char := "\\\\"
-singly_quoted_string_char := "\\" "'"
-singly_quoted_string_char := [^']
+singly_quoted_string_char ::= "\\\\"
+singly_quoted_string_char ::= "\\" "'"
+singly_quoted_string_char ::= [^']
 
-doubly_quoted_string := '"' doubly_quoted_string_char* '"'
+doubly_quoted_string ::= '"' doubly_quoted_string_char* '"'
 
-doubly_quoted_string_char := "\\\\"
-doubly_quoted_string_char := "\\" '"'
-doubly_quoted_string_char := [^"]
+doubly_quoted_string_char ::= "\\\\"
+doubly_quoted_string_char ::= "\\" '"'
+doubly_quoted_string_char ::= [^"]
 
-produces := ":="
+produces ::= "::="
 
-space := space_char+
+space ::= space_char+
 
-space_char := " "
-space_char := "\t"
+space_char ::= " "
+space_char ::= "\t"
 
-newline := space? newline_char+
+newline ::= space? newline_char+
 
-newline_char := "\n" space?
+newline_char ::= "\n" space?

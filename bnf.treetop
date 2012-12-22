@@ -60,7 +60,7 @@ grammar Bnf
   end
 
   rule produces
-    ":="
+    "::="
   end
 
   rule space
