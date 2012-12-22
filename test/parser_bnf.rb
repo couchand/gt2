@@ -23,7 +23,7 @@ class BnfTest < Test::Unit::TestCase
     assert_raises(Exception){ parser.parse input, { :root => :nonterminal } }
   end
 
-  def test_token_terminal_string
+  def test_token_terminal_double_quote_string
     input = '"foobar"'
     parser = Bnf.parser
 
@@ -34,14 +34,14 @@ class BnfTest < Test::Unit::TestCase
     assert_equal 'foobar', tree.text_value
   end
 
-  def test_token_terminal_string_with_unescaped_quote
+  def test_token_terminal_double_quote_string_with_unescaped_quote
     input = '"foo"bar"'
     parser = Bnf.parser
 
     assert_raises(Exception){ parser.parse input, { :root => :terminal } }
   end
 
-  def test_token_terminal_string_with_escaped_quote
+  def test_token_terminal_double_quote_string_with_escaped_quote
     input = '"foo\\"bar"'
     parser = Bnf.parser
 
@@ -52,7 +52,7 @@ class BnfTest < Test::Unit::TestCase
     assert_equal 'foo"bar', tree.text_value
   end
 
-  def test_token_terminal_string_with_escaped_backslash
+  def test_token_terminal_double_quote_string_with_escaped_backslash
     input = '"foo\\\\\\"bar"'
     parser = Bnf.parser
 
@@ -63,7 +63,7 @@ class BnfTest < Test::Unit::TestCase
     assert_equal 'foo\\"bar', tree.text_value
   end
 
-  def test_token_terminal_string_single_quote
+  def test_token_terminal_single_quote_string
     input = "'foobar'"
     parser = Bnf.parser
 
@@ -74,14 +74,14 @@ class BnfTest < Test::Unit::TestCase
     assert_equal 'foobar', tree.text_value
   end
 
-  def test_token_terminal_string_with_unescaped_single_quote
+  def test_token_terminal_single_quote_string_with_unescaped_quote
     input = "'foo'bar'"
     parser = Bnf.parser
 
     assert_raises(Exception){ parser.parse input, { :root => :terminal } }
   end
 
-  def test_token_terminal_string_with_escaped_single_quote
+  def test_token_terminal_single_quote_string_with_escaped_quote
     input = "'foo\\'bar'"
     parser = Bnf.parser
 
@@ -92,7 +92,7 @@ class BnfTest < Test::Unit::TestCase
     assert_equal "foo'bar", tree.text_value
   end
 
-  def test_token_terminal_string_with_escaped_backslash_single_quote
+  def test_token_terminal_single_quote_string_with_escaped_backslash
     input = "'foo\\\\\\'bar'"
     parser = Bnf.parser
 
