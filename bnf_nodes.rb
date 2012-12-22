@@ -8,4 +8,10 @@ class Nonterminal < Treetop::Runtime::SyntaxNode
   end
 end
 
+class DoublyQuotedString < Treetop::Runtime::SyntaxNode
+  def abstract
+    Gt2::Node::TerminalLiteral.new text_value.slice 1..-2
+  end
+end
+
 end

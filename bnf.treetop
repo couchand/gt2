@@ -52,7 +52,7 @@ grammar Bnf
   end
 
   rule doubly_quoted_string
-    '"' doubly_quoted_string_char* '"'
+    '"' doubly_quoted_string_char* '"' <DoublyQuotedString>
   end
 
   rule doubly_quoted_string_char

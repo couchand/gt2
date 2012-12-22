@@ -22,6 +22,17 @@ class BnfTest < Test::Unit::TestCase
 
     assert_raises(Exception){ parser.parse input, { :root => :nonterminal } }
   end
+
+  def test_token_terminal_string
+    input ='"foobar"'
+    parser = Bnf.parser
+
+    tree = parser.parse input, { :root => :terminal }
+
+    assert !tree.nil?, 'The quoted string terminal should parse'
+    assert tree.is_a?(Node::TerminalLiteral), 'The resulting tree should be a terminal node'
+    assert_equal 'foobar', tree.text_value
+  end
 end
 
 end
