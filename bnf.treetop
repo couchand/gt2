@@ -16,10 +16,14 @@ grammar Bnf
   end
 
   rule token
-    quoted_string / [^ \t\n\r:"]+
+    terminal / nonterminal
   end
 
-  rule quoted_string
+  rule nonterminal
+    [^ \t\n\r:"]+
+  end
+
+  rule terminal
     '"' string_char* '"'
   end
 
