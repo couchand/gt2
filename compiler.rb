@@ -1,12 +1,14 @@
 module Gt2
-  module Compiler
-    class Treetop
-      def self.compiler
-        Treetop.new
-      end
+module Compiler
 
-      def compile(input)
-      end
-    end
+class Treetop
+  def self.compiler
+    Treetop.new
   end
+
+  def compile(input)
+  end
+end
+
+end
 end
