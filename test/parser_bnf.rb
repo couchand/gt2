@@ -24,7 +24,7 @@ class BnfTest < Test::Unit::TestCase
   end
 
   def test_token_terminal_string
-    input ='"foobar"'
+    input = '"foobar"'
     parser = Bnf.parser
 
     tree = parser.parse input, { :root => :terminal }
@@ -42,7 +42,7 @@ class BnfTest < Test::Unit::TestCase
   end
 
   def test_token_terminal_string_with_escaped_quote
-    input ='"foo\\"bar"'
+    input = '"foo\\"bar"'
     parser = Bnf.parser
 
     tree = parser.parse input, { :root => :terminal }
@@ -53,7 +53,7 @@ class BnfTest < Test::Unit::TestCase
   end
 
   def test_token_terminal_string_with_escaped_backslash
-    input ='"foo\\\\\\"bar"'
+    input = '"foo\\\\\\"bar"'
     parser = Bnf.parser
 
     tree = parser.parse input, { :root => :terminal }
