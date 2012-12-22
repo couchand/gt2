@@ -1,45 +1,29 @@
-grammar Bnf
-  rule grammar
-    productions
-  end
+grammar := productions
 
-  rule productions
-    production newline productions / production
-  end
+productions := production newline productions
+productions := production
 
-  rule production
-    nonterminal space? produces space? tokens?
-  end
+production := nonterminal space? produces space? tokens?
 
-  rule tokens
-    token space tokens / token
-  end
+tokens := token space tokens
+tokens := token
 
-  rule token
-    terminal / nonterminal
-  end
+token := nonterminal
+token := terminal
 
-  rule nonterminal
-    [^ \t\n\r:"]+
-  end
+nonterminal := [^ \t\n\r:"]+
 
-  rule terminal
-    '"' string_char* '"'
-  end
+terminal := '"' string_char* '"'
 
-  rule string_char
-    "\\\\" / "\\" '"' / [^"]
-  end
+string_char := "\\\\"
+string_char := "\\" '"'
+string_char := [^"]
 
-  rule produces
-    ":="
-  end
+produces := ":="
 
-  rule space
-    ( " " / "\t" )+
-  end
+space := space_char+
 
-  rule newline
-    space? "\n" space?
-  end
-end
+space_char := " "
+space_char := "\t"
+
+newline := space? newline_char space?
