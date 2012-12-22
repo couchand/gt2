@@ -1,9 +1,17 @@
 require 'rubygems'
 require 'treetop'
 
-class Parser
+require_relative 'nodes.rb'
 
-  def self.load  
+module Gt2
+module Parser
+
+class Bnf
+  def self.parser
+    return Bnf.new
+  end
+
+  def self.load
     base_path = File.expand_path(File.dirname(__FILE__))
     Treetop.load(File.join(base_path, 'bnf.treetop'))
     @@parser = BnfParser.new
@@ -19,9 +27,15 @@ class Parser
 			#{@@parser.failure_column}"
     end
 
-#    self.clean_tree(tree)
+    #self.clean_tree(tree)
+    tree
+  end
 
-    return tree
+  def parse(input,options={})
+    Bnf.load
+    parse_tree = Bnf.parse input, options
+
+    Node::Nonterminal.new
   end
 
   private
@@ -33,4 +47,6 @@ class Parser
   end
 end
 
+end
+end
 
