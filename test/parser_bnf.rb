@@ -13,7 +13,7 @@ class BnfTest < Test::Unit::TestCase
 
     assert !tree.nil?, 'The nonterminal should parse'
     assert tree.is_a?(Node::Nonterminal), 'The resulting tree should be a nonterminal node'
-    assert_equal 'foobar', tree.name
+    assert_equal input, tree.name
   end
 
   def test_token_nonterminal_bad_char
@@ -24,14 +24,15 @@ class BnfTest < Test::Unit::TestCase
   end
 
   def test_token_terminal_double_quote_string
-    input = '"foobar"'
+    string_val = "foobar"
+    input = '"' + string_val + '"'
     parser = Bnf.parser
 
     tree = parser.parse input, { :root => :terminal }
 
     assert !tree.nil?, 'The quoted string terminal should parse'
     assert tree.is_a?(Node::TerminalLiteral), 'The resulting tree should be a terminal node'
-    assert_equal 'foobar', tree.text_value
+    assert_equal string_val, tree.text_value
   end
 
   def test_token_terminal_double_quote_string_with_unescaped_quote
@@ -64,14 +65,15 @@ class BnfTest < Test::Unit::TestCase
   end
 
   def test_token_terminal_single_quote_string
-    input = "'foobar'"
+    string_val = "foobar"
+    input = "'" + string_val + "'"
     parser = Bnf.parser
 
     tree = parser.parse input, { :root => :terminal }
 
     assert !tree.nil?, 'The quoted string terminal should parse'
     assert tree.is_a?(Node::TerminalLiteral), 'The resulting tree should be a terminal node'
-    assert_equal 'foobar', tree.text_value
+    assert_equal string_val, tree.text_value
   end
 
   def test_token_terminal_single_quote_string_with_unescaped_quote
