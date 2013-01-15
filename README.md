@@ -3,9 +3,24 @@ gt2
 
 Grammar Tool 2
 
+ * Warning
+ * Dependencies
  * Quick Start
  * Syntax
  * Abstract Syntax Tree
+
+Warning
+-------
+
+This readme is intended to be proscriptive, not descriptive.  As usual, the only real documentation is the code.
+
+Dependencies
+------------
+
+ * Ruby
+ * Gems
+ * Treetop
+ * Thor
 
 Quick Start
 -----------
